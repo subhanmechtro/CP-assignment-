@@ -1,0 +1,49 @@
+#include<iostream>
+#include<string>
+using namespace std;
+// counts total characters in the string
+int countChars(string s){
+return s.length(); // gives total number of characters
+}
+// counts number of spaces in the string
+int countSpaces(string s){
+int c=0; // counter starts at 0
+for(int i=0;i<s.length();i++){ // loop through string using index
+if(s[i]==' '){ // check if character is a space
+c++; // increase counter
+}
+}
+return c;
+}
+// counts number of tabs in the string
+int countTabs(string s){
+int c=0; // counter starts at 0
+for(int i=0;i<s.length();i++){ // loop through each character
+if(s[i]=='\t'){ // check for tab character
+c++; // increase counter if tab found
+}
+}
+return c;
+}
+// counts number of lines (for single input we assume 1 line)
+int countLines(string s){
+int c=1; // at least one line exists if input is given
+
+for(int i=0;i<s.length();i++){
+if(s[i]=='\n'){ // if newline found
+c++;
+}
+}
+return c;
+}
+int main(){
+string s;
+// takes full line input (spaces included)
+getline(cin,s);
+// calling functions and printing results
+cout<<"Characters:"<<countChars(s)<<"\n";
+cout<<"Spaces:"<<countSpaces(s)<<"\n";
+cout<<"Tabs:"<<countTabs(s)<<"\n";
+cout<<"Lines:"<<countLines(s)<<"\n";
+return 0;
+}
