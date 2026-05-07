@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+// calculates mean (average)
+float mean(int a[],int n){
+int sum=0;
+for(int i=0;i<n;i++){
+sum=sum+a[i]; // adding all elements
+}
+return (float)sum/n; // divide total by number of elements
+}
+// sorts array (needed for median and mode)
+void sortArray(int a[],int n){
+for(int i=0;i<n-1;i++){
+for(int j=0;j<n-i-1;j++){
+if(a[j]>a[j+1]){
+int temp=a[j];
+a[j]=a[j+1];
+a[j+1]=temp;
+}
+}
+}
+}
+// calculates median
+float median(int a[],int n){
+sortArray(a,n); // first sort array
+if(n%2==0){
+return (a[n/2]+a[n/2-1])/2.0; // even case
+}
+else{
+return a[n/2]; // odd case
+}
+}
+// calculates mode (most frequent value)
+int mode(int a[],int n){
+int maxCount=0;
+int modeValue=a[0];
+for(int i=0;i<n;i++){
+int count=0;
+for(int j=0;j<n;j++){
+if(a[i]==a[j]){
+count++;
+}
+}
+if(count>maxCount){
+maxCount=count;
+modeValue=a[i];
+}
+}
+return modeValue;
+}
+int main(){
+int n;
+cout<<"Enter size:";
+cin>>n;
+int a[n];
+// input array
+for(int i=0;i<n;i++){
+cin>>a[i];
+}
+cout<<"Mean:"<<mean(a,n)<<"\n";
+cout<<"Median:"<<median(a,n)<<"\n";
+cout<<"Mode:"<<mode(a,n)<<"\n";
+return 0;
+}
